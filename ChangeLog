@@ -1,0 +1,17 @@
+commit 298db3ee1f3e1f09fb632b70a0005e5e9026b1cf
+Author: Olaf Mersmann <olafm@statistik.tu-dortmund.de>
+Date:   2010-01-28 18:38:08 +0100
+
+    Add Windows support thanks to Uwe Ligges.
+
+commit a6c3fcda518445081fd4987ec72c9cf54b4ba2f9
+Author: Olaf Mersmann <olafm@statistik.tu-dortmund.de>
+Date:   2009-07-23 02:08:46 +0200
+
+    Bump version number
+
+commit 2213e3e513f4a0b3442ad55dab5c66f422d1697d
+Author: Olaf Mersmann <olafm@statistik.tu-dortmund.de>
+Date:   2009-07-23 01:27:19 +0200
+
+    Inital checkin
