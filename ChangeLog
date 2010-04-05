@@ -1,3 +1,20 @@
+commit fe44134e3cfaf6c22f8ff45bb43017d32b8b1663
+Author: Olaf Mersmann <olafm@statistik.tu-dortmund.de>
+Date:   2010-04-05 18:09:55 +0200
+
+    Change the way fftw3 is located on UNIX like systems.
+    
+    Instead of searching for fftw3 using autoconf macros, rely on pkg-config
+    to supply the necessary compiler and linker flags. This should fix a bug
+    first reported by Prof. Ripley compiling the package on Solaris using
+    the Sun Studio C compiler.
+
+commit f1ec95cc86b1fb1e15f6752a84cac1ffb3457a4b
+Author: Olaf Mersmann <olafm@statistik.tu-dortmund.de>
+Date:   2010-01-31 17:24:27 +0100
+
+    Update autofoo files.
+
 commit 298db3ee1f3e1f09fb632b70a0005e5e9026b1cf
 Author: Olaf Mersmann <olafm@statistik.tu-dortmund.de>
 Date:   2010-01-28 18:38:08 +0100
