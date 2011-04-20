@@ -1,3 +1,12 @@
+commit 36a0a143ed3e5bbac3a93f144d2c48714f8fed7a
+Author: Olaf Mersmann <olafm@statistik.tu-dortmund.de>
+Date:   2011-04-20 10:46:52 +0200
+
+    Fix a finalizer bug for the DCT case.
+    
+    The DCT finalizer was not correctly registerd, potentially causing R
+    to crash due to memory corruption. (Report and patch by Bart Janssen)
+
 commit fe44134e3cfaf6c22f8ff45bb43017d32b8b1663
 Author: Olaf Mersmann <olafm@statistik.tu-dortmund.de>
 Date:   2010-04-05 18:09:55 +0200

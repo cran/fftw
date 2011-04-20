@@ -243,7 +243,7 @@ SEXP DCT_plan(SEXP s_n, SEXP s_type, SEXP s_effort) {
 
   SEXP s_ret = R_MakeExternalPtr((void *)plan, R_NilValue, R_NilValue);
   assert(s_ret != R_NilValue);
-  R_RegisterCFinalizer(s_ret, fft_plan_finalizer);
+  R_RegisterCFinalizer(s_ret, dct_plan_finalizer);
   return s_ret;
 }
 
