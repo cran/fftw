@@ -4,11 +4,11 @@
 ## Process this file with autoconf to produce a configure script.
 ##
 
-AC_PREREQ(2.69)
+AC_PREREQ([2.69])
 
 ## ---[ VERSION ]-------------------------------------------------------------
 
-AC_INIT()
+AC_INIT
 
 # pkg.m4 - Macros to locate and utilise pkg-config.            -*- Autoconf -*-
 # 
@@ -195,4 +195,5 @@ AC_SUBST(CPPFLAGS)
 AC_SUBST(CXXFLAGS)
 AC_SUBST(LIBS)
 
-AC_OUTPUT(src/Makevars)
+AC_CONFIG_FILES([src/Makevars])
+AC_OUTPUT
