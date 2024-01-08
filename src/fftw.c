@@ -15,6 +15,8 @@
 #include <R_ext/Applic.h>
 #include <R_ext/Rdynload.h>
 #include <fftw3.h>
+#include <stdio.h>
+#include <stdint.h>
 
 #define ALLOC_VECTOR(S, D, ST, DT, C, N)                                       \
   SEXP S;                                                                      \
@@ -39,6 +41,7 @@
 
 /* Is fftw initialized? */
 static int initialized = FALSE;
+
 
 /* Holds a plan for the forward and reverse FFT of size 'size'. */
 typedef struct {
@@ -109,10 +112,10 @@ SEXP FFT_print_plan(SEXP s_plan) {
   fft_plan *plan = R_ExternalPtrAddr(s_plan);
 
   Rprintf("plan->size     : %i\n", plan->size);
-  Rprintf("plan->in       : 0x%08x\n", plan->in);
-  Rprintf("plan->out      : 0x%08x\n", plan->out);
-  Rprintf("plan->forward  : 0x%08x\n", plan->forward);
-  Rprintf("plan->backward : 0x%08x\n", plan->backward);
+  Rprintf("plan->in       : %p\n", (void *)  plan->in);
+  Rprintf("plan->out      : %p\n", (void *)  plan->out);
+  Rprintf("plan->forward  : %p\n", (void *)  plan->forward);
+  Rprintf("plan->backward : %p\n", (void *)  plan->backward);
   return R_NilValue;
 }
 
@@ -161,6 +164,10 @@ SEXP FFT_execute(SEXP s_plan, SEXP s_x, SEXP s_inv) {
 
   /* Extract input vector: */
   n = length(s_x);
+  if (n < 1) {
+    error("Input has length zero.");
+    return R_NilValue;
+  }
   if (n != plan->size) {
     error("Input and plan size differ.");
     return R_NilValue;
@@ -265,6 +272,10 @@ SEXP DCT_execute(SEXP s_plan, SEXP s_x, SEXP s_inv) {
 
   /* Extract input vector: */
   n = length(s_x);
+  if (n < 1) {
+    error("Input has length zero.");
+    return R_NilValue;
+  }
   if (n != plan->size) {
     error("Input and plan size differ.");
     return R_NilValue;
