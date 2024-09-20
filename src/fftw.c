@@ -64,7 +64,7 @@ void fft_plan_finalizer(SEXP s_plan) {
     fftw_destroy_plan(plan->forward);
   if (NULL != plan->backward)
     fftw_destroy_plan(plan->backward);
-  Free(plan);
+  R_Free(plan);
 }
 
 /* Holds a plan for the forward and reverse type 'type DCT of size 'size'. */
@@ -89,7 +89,7 @@ void dct_plan_finalizer(SEXP s_plan) {
   /* Check that forward and backward are not the same plan (type I DCT): */
   if (NULL != plan->backward && plan->backward != plan->forward)
     fftw_destroy_plan(plan->backward);
-  Free(plan);
+  R_Free(plan);
 }
 
 /* Helper routines: */
@@ -134,7 +134,7 @@ SEXP FFT_plan(SEXP s_n, SEXP s_effort) {
     initialized = TRUE;
   }
 
-  plan = Calloc(1, fft_plan);
+  plan = R_Calloc(1, fft_plan);
   plan->size = n;
   plan->in = (fftw_complex *)fftw_malloc(sizeof(fftw_complex) * n);
   plan->out = (fftw_complex *)fftw_malloc(sizeof(fftw_complex) * n);
@@ -238,7 +238,7 @@ SEXP DCT_plan(SEXP s_n, SEXP s_type, SEXP s_effort) {
     initialized = TRUE;
   }
 
-  plan = Calloc(1, dct_plan);
+  plan = R_Calloc(1, dct_plan);
   plan->size = n;
   plan->in = (double *)fftw_malloc(sizeof(double) * n);
   plan->out = (double *)fftw_malloc(sizeof(double) * n);
